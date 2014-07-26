@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Classes", "GLD.HIPAA.Classes\GLD.HIPAA.Classes.csproj", "{3D106AA3-9FA7-47E2-A0A8-C2A843983457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.DataProvider", "GLD.HIPAA.DataProvider\GLD.HIPAA.DataProvider.csproj", "{060F7296-29D6-4E1E-A164-A43A572D4CFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.DataProvider.Test", "GLD.HIPAA.DataProvider.Test\GLD.HIPAA.DataProvider.Test.csproj", "{4CF19E9B-2EAA-4A19-B6C2-A03320F9D574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Doc", "GLD.HIPAA.Doc\GLD.HIPAA.Doc.csproj", "{DC1C857D-3963-4EE5-B0AB-1237D73E75C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Model", "GLD.HIPAA.Model\GLD.HIPAA.Model.csproj", "{20AE195B-F1AA-4720-B093-A997611C4626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Classes.Test", "GLD.HIPAA.Classes.Test\GLD.HIPAA.Classes.Test.csproj", "{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D106AA3-9FA7-47E2-A0A8-C2A843983457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D106AA3-9FA7-47E2-A0A8-C2A843983457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D106AA3-9FA7-47E2-A0A8-C2A843983457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D106AA3-9FA7-47E2-A0A8-C2A843983457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060F7296-29D6-4E1E-A164-A43A572D4CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060F7296-29D6-4E1E-A164-A43A572D4CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060F7296-29D6-4E1E-A164-A43A572D4CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060F7296-29D6-4E1E-A164-A43A572D4CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF19E9B-2EAA-4A19-B6C2-A03320F9D574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF19E9B-2EAA-4A19-B6C2-A03320F9D574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF19E9B-2EAA-4A19-B6C2-A03320F9D574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF19E9B-2EAA-4A19-B6C2-A03320F9D574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC1C857D-3963-4EE5-B0AB-1237D73E75C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC1C857D-3963-4EE5-B0AB-1237D73E75C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC1C857D-3963-4EE5-B0AB-1237D73E75C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC1C857D-3963-4EE5-B0AB-1237D73E75C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AE195B-F1AA-4720-B093-A997611C4626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AE195B-F1AA-4720-B093-A997611C4626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AE195B-F1AA-4720-B093-A997611C4626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AE195B-F1AA-4720-B093-A997611C4626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
