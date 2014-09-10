@@ -17,7 +17,7 @@ namespace GLD.HIPAA.DataProvider
         public MyMongo(string connectionString)
         {
             var client = new MongoClient(connectionString);
-            MongoServer server = client.GetServer();
+            var server = client.GetServer();
             _database = server.GetDatabase(DbName);
         }
 
@@ -40,21 +40,21 @@ namespace GLD.HIPAA.DataProvider
         {
             _database.GetCollection<Document>(DocumentCollection).Insert(doc);
 
-            foreach (Segment segment in segments)
+            foreach (var segment in segments)
                 _database.GetCollection<Segment>(SegmentCollection).Insert(segment);
         }
 
         // Read: ============================================================
         public string ReadSegment(string segmentId)
         {
-            IMongoQuery query = Query<Segment>.EQ(c => c.Id, segmentId);
+            var query = Query<Segment>.EQ(c => c.Id, segmentId);
             return _database.GetCollection<Segment>(SegmentCollection)
                 .FindOne(query).Value;
         }
 
         public string[] ReadDocumentAsWhole(string docId)
         {
-            IOrderedQueryable<Segment> collection = _database.GetCollection<Segment>(SegmentCollection)
+            var collection = _database.GetCollection<Segment>(SegmentCollection)
                 .AsQueryable<Segment>()
                 .Where(c => c.DocumentId == docId)
                 .OrderBy(c => c.SegmentIndex);
@@ -65,19 +65,19 @@ namespace GLD.HIPAA.DataProvider
         // Remove: ============================================================
         public void RemoveDoc(string docId)
         {
-            IMongoQuery query = Query<Document>.EQ(e => e.Id, docId);
+            var query = Query<Document>.EQ(e => e.Id, docId);
             _database.GetCollection<Document>(DocumentCollection).Remove(query);
         }
 
         public void RemoveSegment(string segmentId)
         {
-            IMongoQuery query = Query<Segment>.EQ(e => e.Id, segmentId);
+            var query = Query<Segment>.EQ(e => e.Id, segmentId);
             _database.GetCollection<Segment>(SegmentCollection).Remove(query);
         }
 
         public void RemoveDocWithSegments(string docId)
         {
-            IMongoQuery query = Query<Segment>.EQ(e => e.DocumentId, docId);
+            var query = Query<Segment>.EQ(e => e.DocumentId, docId);
             _database.GetCollection<Segment>(SegmentCollection).Remove(query);
 
             query = Query<Document>.EQ(e => e.Id, docId);

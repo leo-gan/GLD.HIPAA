@@ -20,7 +20,7 @@ namespace GLD.HIPAA.Classes
         public XsdParser(string xsdFileName)
         {
             InputXsdFile(xsdFileName);
-            string rootNodeName = GetRootNodeName();
+            var rootNodeName = GetRootNodeName();
             EdiNodeTree = new Node {Name = rootNodeName};
             EdiNodeTree = CreateNode(rootNodeName);
         }
@@ -51,12 +51,12 @@ namespace GLD.HIPAA.Classes
             //    <xs:sequence>
             //      <xs:element minOccurs="0" maxOccurs="1" name="ST">
             //...
-            XElement element = EdiDocument.XPathSelectElement(@"//*[@name='" + nodeName + "']");
+            var element = EdiDocument.XPathSelectElement(@"//*[@name='" + nodeName + "']");
             if (IsNode(nodeName))
             {
                 var nodeArr = new List<Node>();
-                IEnumerable<XElement> elements = CreateChildElementCollection(element);
-                foreach (XElement childElement in elements.Where(childElement => !IsSTorSEsubelements(childElement))) nodeArr.Add(CreateNode(GetElementName(childElement)));
+                var elements = CreateChildElementCollection(element);
+                foreach (var childElement in elements.Where(childElement => !IsSTorSEsubelements(childElement))) nodeArr.Add(CreateNode(GetElementName(childElement)));
                 node.Nodes = nodeArr.ToArray();
             }
             else
@@ -68,7 +68,7 @@ namespace GLD.HIPAA.Classes
         // So, those subelements should not be processed as nodes. 
         private bool IsSTorSEsubelements(XElement element)
         {
-            string name = GetElementName(element);
+            var name = GetElementName(element);
             return
                 name == "ST01_TransactionSetIdentifierCode"
                 || name == "ST02_TransactionSetControlNumber"
@@ -80,7 +80,7 @@ namespace GLD.HIPAA.Classes
 
         private string GetElementName(XElement element)
         {
-            string name = (element.Attribute("ref") == null ? null : element.Attribute("ref").Value) ?? (element.Attribute("name") == null ? null : element.Attribute("name").Value);
+            var name = (element.Attribute("ref") == null ? null : element.Attribute("ref").Value) ?? (element.Attribute("name") == null ? null : element.Attribute("name").Value);
             return name;
         }
 
@@ -91,7 +91,7 @@ namespace GLD.HIPAA.Classes
 
         private bool IsNode(string nodeName)
         {
-            string[] nameParts = nodeName.Split(new[] {'_'}, StringSplitOptions.None);
+            var nameParts = nodeName.Split(new[] {'_'}, StringSplitOptions.None);
             return nameParts[nameParts.Length - 1] == "Loop" || nameParts[nameParts.Length - 1] == "SubLoop" || nameParts[0] == "X12";
         }
 
@@ -117,8 +117,8 @@ namespace GLD.HIPAA.Classes
             segment.Elements = GetEdiElements(element);
             //        <xs:element minOccurs="1" maxOccurs="1" ref="BPR_FinancialInformation" />
 
-            string segmentName = element.Attribute("name").Value;
-            XElement nodeRef = EdiDocument.XPathSelectElement(@"//*[@ref='" + segmentName + "']");
+            var segmentName = element.Attribute("name").Value;
+            var nodeRef = EdiDocument.XPathSelectElement(@"//*[@ref='" + segmentName + "']");
             if (nodeRef == null) return segment;
             segment.Min = OneIfNotExisted_minOccurs(nodeRef);
             segment.Max = OneIfNotExisted_maxOccurs(nodeRef);
@@ -129,13 +129,13 @@ namespace GLD.HIPAA.Classes
         private Element[] GetEdiElements(XElement segmentNode)
         {
             if (segmentNode == null) return null;
-            IEnumerable<XElement> elements = NullIfNotExisted_element(segmentNode);
+            var elements = NullIfNotExisted_element(segmentNode);
             if (elements == null) return null;
 
             var ediElements = new Element[elements.Count()];
             // set element parameters:
-            int i = 0;
-            foreach (XElement element in elements)
+            var i = 0;
+            foreach (var element in elements)
             {
                 /*
                     <xs:element minOccurs="1" maxOccurs="1" name="BPR02_TotalActualProviderPaymentAmount">

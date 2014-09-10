@@ -12,7 +12,7 @@ namespace GLD.HIPAA.Classes
         public static StringBuilder CreateClassFile(string className, Node rootNode)
         {
             var sb = new StringBuilder();
-            int indent = 0;
+            var indent = 0;
 
             FileHeader(ref sb, ref indent);
             Header(ref sb, ref indent);
@@ -83,7 +83,7 @@ namespace GLD.HIPAA.Classes
             {
                 NodeCollectionHeader(ref sb, ref indent);
                 Header(ref sb, ref indent);
-                foreach (Node subnode in node.Nodes)
+                foreach (var subnode in node.Nodes)
                 {
                     Node(ref sb, ref indent, subnode);
                     Comma(ref sb, ref indent);
@@ -124,7 +124,7 @@ namespace GLD.HIPAA.Classes
             {
                 ElementCollection(ref sb, ref indent);
                 Header(ref sb, ref indent);
-                foreach (Element element in segment.Elements)
+                foreach (var element in segment.Elements)
                     Element(ref sb, ref indent, element);
                 Footer(ref sb, ref indent, null);
             }

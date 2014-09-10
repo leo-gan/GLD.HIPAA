@@ -30,20 +30,20 @@ namespace GLD.HIPAA.DataProvider.Test
             const string segmentCollection = "SegmentsTest";
             // started from a simple class.
             var client = new MongoClient(MongodbHost);
-            MongoServer server = client.GetServer();
-            MongoDatabase database = server.GetDatabase(dbName);
-            MongoCollection<Segment> collection = database.GetCollection<Segment>(segmentCollection);
+            var server = client.GetServer();
+            var database = server.GetDatabase(dbName);
+            var collection = database.GetCollection<Segment>(segmentCollection);
 
             collection.RemoveAll();
 
-            string[] segments = GetSegmentsFromFile();
+            var segments = GetSegmentsFromFile();
 
-            int i = 0;
-            foreach (string segment in segments)
+            var i = 0;
+            foreach (var segment in segments)
                 collection.Insert(new Segment(_docId, i++, segment));
 
-            IOrderedEnumerable<Segment> sortedSegments = collection.FindAll().OrderBy(c => c.SegmentIndex);
-            foreach (Segment segment in sortedSegments)
+            var sortedSegments = collection.FindAll().OrderBy(c => c.SegmentIndex);
+            foreach (var segment in sortedSegments)
                 Console.WriteLine("[{0}]\t{1}\t{2}", segment.Id, segment.Tag, segment.Value);
 
             Assert.IsNotNull(collection);
@@ -52,15 +52,15 @@ namespace GLD.HIPAA.DataProvider.Test
         [TestMethod]
         public void MongoSegment()
         {
-            string[] segments = GetSegmentsFromFile();
+            var segments = GetSegmentsFromFile();
 
             var client = new MyMongo(MongodbHost);
-            string segmentId = _docId + ".0";
+            var segmentId = _docId + ".0";
             client.RemoveSegment(segmentId); // clean up!
 
             client.WriteSegment(new Segment(_docId, 0, segments[0]));
 
-            string segmentFromDb = client.ReadSegment(segmentId);
+            var segmentFromDb = client.ReadSegment(segmentId);
             Assert.IsNotNull(segmentFromDb);
             Assert.AreEqual(segments[0], segmentFromDb);
 
@@ -70,7 +70,7 @@ namespace GLD.HIPAA.DataProvider.Test
         [TestMethod]
         public void MongoReadDocumentAsWhole()
         {
-            string docId = Guid.NewGuid().ToString();
+            var docId = Guid.NewGuid().ToString();
             ReadFileAndWriteItInMongo(docId);
             CleanUpMongo(docId);
         }
@@ -80,11 +80,11 @@ namespace GLD.HIPAA.DataProvider.Test
         {
             // read test file
             // write it into MongoBd
-            string docId = Guid.NewGuid().ToString();
+            var docId = Guid.NewGuid().ToString();
             ReadFileAndWriteItInMongo(docId);
 
             // Read it back 
-            string[] segments = ReadDocSegmentsFromMongo(docId);
+            var segments = ReadDocSegmentsFromMongo(docId);
             CleanUpMongo(docId);
 
             // and write into a file.
@@ -107,7 +107,7 @@ namespace GLD.HIPAA.DataProvider.Test
 
         private void ReadFileAndWriteItInMongo(string docId)
         {
-            string[] segmentValues = GetSegmentsFromFile();
+            var segmentValues = GetSegmentsFromFile();
 
             var segments = new Segment[segmentValues.Length];
             for (var i = 0; i < segmentValues.Length; i++)
@@ -131,10 +131,10 @@ namespace GLD.HIPAA.DataProvider.Test
         private string[] ReadDocSegmentsFromMongo(string docId)
         {
             var client = new MyMongo(MongodbHost);
-            string[] segmentFromDb = client.ReadDocumentAsWhole(docId);
+            var segmentFromDb = client.ReadDocumentAsWhole(docId);
             Assert.IsNotNull(segmentFromDb);
             Assert.IsTrue(segmentFromDb.Length > 1);
-            foreach (string t in segmentFromDb)
+            foreach (var t in segmentFromDb)
                 Assert.IsTrue(t.Length > 1);
 
             return segmentFromDb;

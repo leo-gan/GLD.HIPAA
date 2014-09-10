@@ -35,7 +35,7 @@ namespace GLD.HIPAA.Classes.Test
         {
             _gen = new XsdParser(XsdFilePath + className + ".xsd");
 
-            string generatedFileFullName = ClassFilePath + className + ".cs";
+            var generatedFileFullName = ClassFilePath + className + ".cs";
             if (File.Exists(generatedFileFullName))
                 File.Delete(generatedFileFullName);
             //_gen.EdiNodeTree = new Node() {Name = "Name", IsOptional = true, Nodes = null, Segment = null};

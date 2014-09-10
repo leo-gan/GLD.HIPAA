@@ -18,7 +18,7 @@ namespace GLD.HIPAA.Doc
             DocumentId = documentId;
             SegmentIndex = index;
             Value = value;
-            string[] elements = value.Split(new[] {elementSeparator}, StringSplitOptions.None);
+            var elements = value.Split(new[] {elementSeparator}, StringSplitOptions.None);
             if (elements != null && elements.Length > 0)
                 Tag = elements[0];
         }
