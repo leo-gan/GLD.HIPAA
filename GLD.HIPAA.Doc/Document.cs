@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GLD.HIPAA.Doc
 {
+    /// <summary>
+    /// It defines the EDI document and only includes the header parameters. It does not include segments. It separates the document and the segments workflow.
+    /// </summary>
     public class Document
     {
         public Document()

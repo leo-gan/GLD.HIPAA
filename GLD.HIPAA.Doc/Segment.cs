@@ -2,6 +2,9 @@
 
 namespace GLD.HIPAA.Doc
 {
+    /// <summary>
+    /// It stores a Segment, linked with Document. It stores all segment values as a string value.
+    /// </summary>
     public class Segment
     {
         public Segment()

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("GLD.HIPAA.ClassGenerator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("It is a helper project. It used by Classes.Test to generate EDI classes from Xsd schemas.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GLD.HIPAA.ClassGenerator")]

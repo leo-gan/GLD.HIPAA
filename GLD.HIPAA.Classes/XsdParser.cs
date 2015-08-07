@@ -8,6 +8,9 @@ using GLD.HIPAA.Model;
 
 namespace GLD.HIPAA.Classes
 {
+    /// <summary>
+    /// It works for preliminary stage to create classes from existed Xsd schemas.
+    /// </summary>
     public class XsdParser
     {
         private readonly XNamespace ns_Edi = "http://schemas.microsoft.com/BizTalk/EDI/X12/2006";
@@ -42,6 +45,11 @@ namespace GLD.HIPAA.Classes
             return EdiDocument.Element(ns_xs + "annotation").Element(ns_xs + "appinfo").Element(ns_b + "schemaInfo").Attribute("root_reference").Value;
         }
 
+        /// <summary>
+        /// It is a recursive method. It travers schema nodes and create class nodes or a node segment.
+        /// </summary>
+        /// <param name="nodeName"></param>
+        /// <returns></returns>
         private Node CreateNode(string nodeName)
         {
             var node = new Node {Name = nodeName};
@@ -56,7 +64,8 @@ namespace GLD.HIPAA.Classes
             {
                 var nodeArr = new List<Node>();
                 var elements = CreateChildElementCollection(element);
-                foreach (var childElement in elements.Where(childElement => !IsSTorSEsubelements(childElement))) nodeArr.Add(CreateNode(GetElementName(childElement)));
+                foreach (var childElement in elements.Where(childElement => !IsSTorSEsubelements(childElement)))
+                    nodeArr.Add(CreateNode(GetElementName(childElement)));
                 node.Nodes = nodeArr.ToArray();
             }
             else
@@ -64,8 +73,8 @@ namespace GLD.HIPAA.Classes
             return node;
         }
 
-        // Becase the ST and SE segments are defined on plase, they subelements enumerated in the high level of segments. 
-        // So, those subelements should not be processed as nodes. 
+        /// Becase the ST and SE segments are defined on place, they subelements enumerated in the high level of segments. 
+        /// So, those subelements should not be processed as nodes. 
         private bool IsSTorSEsubelements(XElement element)
         {
             var name = GetElementName(element);

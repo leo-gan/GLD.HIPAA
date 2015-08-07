@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Classes", "GLD.HIPAA.Classes\GLD.HIPAA.Classes.csproj", "{3D106AA3-9FA7-47E2-A0A8-C2A843983457}"
 EndProject
@@ -14,6 +14,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Model", "GLD.HIPAA.Model\GLD.HIPAA.Model.csproj", "{20AE195B-F1AA-4720-B093-A997611C4626}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLD.HIPAA.Classes.Test", "GLD.HIPAA.Classes.Test\GLD.HIPAA.Classes.Test.csproj", "{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{D41A5642-1774-4E65-B1E4-9FA58592FA1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3C1BDC51-B13B-4983-9300-A97C217369E7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +57,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D106AA3-9FA7-47E2-A0A8-C2A843983457} = {D41A5642-1774-4E65-B1E4-9FA58592FA1B}
+		{9F1B7002-FF7D-46CC-8946-5A7B2E181B0E} = {D41A5642-1774-4E65-B1E4-9FA58592FA1B}
 	EndGlobalSection
 EndGlobal

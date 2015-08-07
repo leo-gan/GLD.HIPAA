@@ -21,6 +21,9 @@ namespace GLD.HIPAA.Classes.Test
             CreateAFile(className);
         }
 
+        /// <summary>
+        /// To generate classes from Xsd schemas. If class existed, it will be recreated.
+        /// </summary>
         [TestMethod]
         public void CreateAllClassFiles()
         {

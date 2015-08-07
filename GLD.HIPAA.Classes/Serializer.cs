@@ -4,6 +4,9 @@ using GLD.HIPAA.Model;
 
 namespace GLD.HIPAA.Classes
 {
+    /// <summary>
+    /// It generates a text representation of a C# class. It is called from XsdParser.
+    /// </summary>
     internal class Serializer
     {
         private const int IndentLength = 4;
